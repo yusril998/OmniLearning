@@ -8,6 +8,7 @@
  * @format
  */
 
+import { StackNavigationProp } from '@react-navigation/stack/lib/typescript/src/types';
 import React from 'react';
 import {
   Image,
@@ -19,13 +20,16 @@ import {
 
   View,
 } from 'react-native';
+import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import Btn from '../component/btn';
 import Txtfeld from '../component/txtfeld';
 import colors from '../cons/color';
 import strings from '../cons/string';
+import { RootStackParamList } from './Root';
+type loginScreenProp = StackNavigationProp<RootStackParamList, 'loginScreen'>;
 
 const LoginScreen = ({ }) => {
-
+  const navigation = useNavigation<loginScreenProp>();
   const [data, setData] = React.useState({
     email: "",
     password: "",
@@ -62,19 +66,20 @@ const LoginScreen = ({ }) => {
         ...data,
         kondisi: "tidak berhasil"
       });
+      navigation.navigate('homeScreen');
     }
   };
 
   return (
     <View style={styles.container}>
       <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
-    
+
       <View style={styles.header}>
         <View style={styles.absolute}>
-        <Image source={require('../assets/reading-book.png')} style={styles.image} />
-        <Text style={styles.text_header}>{strings.WELCOME_TO_LOGIN}</Text>
+          <Image source={require('../assets/reading-book.png')} style={styles.image} />
+          <Text style={styles.text_header}>{strings.WELCOME_TO_LOGIN}</Text>
         </View>
-    
+
       </View>
       <View style={styles.footer}>
         <Txtfeld
@@ -96,19 +101,19 @@ const LoginScreen = ({ }) => {
 };
 
 const styles = StyleSheet.create({
-  image:{
-    height:100,
-    width:100,
-    tintColor:colors.white
+  image: {
+    height: 100,
+    width: 100,
+    tintColor: colors.white
   },
-  absolute:{
-   top:40,
-   left:20,
-   right:0,
-   alignContent:"center",
-    position:"absolute"
-    
-    
+  absolute: {
+    top: 40,
+    left: 20,
+    right: 0,
+    alignContent: "center",
+    position: "absolute"
+
+
   },
   container: {
     flex: 1,
@@ -130,7 +135,7 @@ const styles = StyleSheet.create({
     paddingVertical: 50
   },
   text_header: {
-    paddingTop:10,
+    paddingTop: 10,
     color: colors.white,
     fontWeight: 'bold',
     fontSize: 25

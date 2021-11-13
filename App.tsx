@@ -28,6 +28,7 @@ import {
   LearnMoreLinks,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import HomeScreen from './screen/HomeScreen';
 import LoginScreen from './screen/LoginScreen';
 import StartedScreen from './screen/StartedScreen';
 
@@ -66,8 +67,9 @@ const App = () => {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="startedScreen">
-        <Stack.Screen name="startedScreen" component={StartedScreen} />
-        <Stack.Screen name="loginScreen" component={LoginScreen} />
+        <Stack.Screen options={{headerShown: false}} name="startedScreen" component={StartedScreen} />
+        <Stack.Screen options={{headerShown: false}} name="loginScreen" component={LoginScreen} />
+        <Stack.Screen options={{headerShown: false}} name="homeScreen" component={HomeScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );

@@ -9,7 +9,7 @@ class Txtfeld extends React.Component<Props> {
     const { style, ...otherProps } = this.props;
     return (
       <TextInput
-        selectionColor={colors.DODGER_BLUE}
+        selectionColor={colors.primary}
         style={[styles.textInput, style]}
         {...otherProps}
       />
@@ -20,7 +20,7 @@ class Txtfeld extends React.Component<Props> {
 const styles = StyleSheet.create({
   textInput: {
     height: 40,
-    borderColor: colors.SILVER,
+    borderColor: colors.primary,
     borderBottomWidth: StyleSheet.hairlineWidth,
     marginBottom: 20
   }

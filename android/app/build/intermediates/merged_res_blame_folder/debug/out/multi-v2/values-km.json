@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "/Users/mochamadyusrilfahmiilhamfikri/Development/ReactNative/OmniLearnProject/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-km/values-km.xml",
+            "outputFile": "/Users/mochamadyusrilfahmiilhamfikri/Development/ReactNative/OmniLearning/android/app/build/intermediates/incremental/mergeDebugResources/merged.dir/values-km/values-km.xml",
             "map": [
                 {
                     "source": "/Users/mochamadyusrilfahmiilhamfikri/.gradle/caches/transforms-3/5646db46e2cfb43e7b3d42f3054c498c/transformed/core-1.5.0/res/values-km/values-km.xml",
