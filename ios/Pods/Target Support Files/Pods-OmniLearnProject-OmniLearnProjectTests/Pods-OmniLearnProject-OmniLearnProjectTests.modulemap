@@ -1,0 +1,6 @@
+module Pods_OmniLearnProject_OmniLearnProjectTests {
+  umbrella header "Pods-OmniLearnProject-OmniLearnProjectTests-umbrella.h"
+
+  export *
+  module * { export * }
+}

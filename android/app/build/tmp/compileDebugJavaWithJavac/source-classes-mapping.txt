@@ -1,0 +1,14 @@
+com/omnilearnproject/MainApplication.java
+ com.omnilearnproject.MainApplication
+ com.omnilearnproject.MainApplication$1
+com/omnilearnproject/BuildConfig.java
+ com.omnilearnproject.BuildConfig
+com/omnilearnproject/MainActivity.java
+ com.omnilearnproject.MainActivity
+com/omnilearnproject/ReactNativeFlipper.java
+ com.omnilearnproject.ReactNativeFlipper
+ com.omnilearnproject.ReactNativeFlipper$1
+ com.omnilearnproject.ReactNativeFlipper$2
+ com.omnilearnproject.ReactNativeFlipper$2$1
+com/facebook/react/PackageList.java
+ com.facebook.react.PackageList
