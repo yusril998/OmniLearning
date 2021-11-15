@@ -10,40 +10,50 @@ interface Props {
   label: string;
   isSelected: boolean;
 }
-
-class Todo extends React.Component<Props> {
-
+interface iState {
  
-  render() {
-    const { label, isSelected } = this.props;
+  checked: boolean;
+}
+class Todo extends React.Component<Props,iState> {
+  constructor(props:any) {
+    super(props);
     this.state = {
-      checked: isSelected,
+     checked: this.props.isSelected
     };
+    
+  }
+  render() {
+   
     return (
       <View style={styles.footer}>
-<View style={styles.checkboxContainer}>
-      <CheckBox
-      
-        value={isSelected}
-        onValueChange={() => this.setState({ isSelected: !isSelected})}
-        style={styles.checkbox}
-      />
-      <Text style={styles.label}>Do you like React Native?</Text>
-    </View>
+        <Text style={styles.label}>{this.props.label}</Text>
+        <View style={styles.checkboxContainer}>
+          <CheckBox
+            value={this.state.checked}
+            //onValueChange={() => this.setState({ checked: !checked})}
+            onChange={() => this.setState({ checked: !this.state.checked })}
+            style={styles.checkbox}
+          />
+          <Text style={styles.label}>Complited</Text>
+        </View>
+
+
       </View>
-      
+
     );
   }
 }
 
 const styles = StyleSheet.create({
   footer: {
-    
+
     backgroundColor: '#fff',
-    borderRadius: 30,
-    paddingHorizontal: 30,
+    borderRadius: 10,
+    marginHorizontal: 10,
+    paddingHorizontal: 10,
+    marginTop: 15,
     justifyContent: "center",
-    paddingVertical: 50
+    paddingVertical: 10
   },
   container: {
     flex: 1,
@@ -52,7 +62,7 @@ const styles = StyleSheet.create({
   },
   checkboxContainer: {
     flexDirection: "row",
-    marginBottom: 20,
+    marginBottom: 10,
   },
   checkbox: {
     alignSelf: "center",
