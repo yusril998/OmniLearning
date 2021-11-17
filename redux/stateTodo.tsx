@@ -9,9 +9,9 @@ interface todoJson {
     completed: any;
   }
 
-export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
+export const fetchtodos = createAsyncThunk('todos/fetchtodos', async () => {
     var response:any;
-    // const response = await fetch('https://reqres.in/api/users?delay=1');
+    // const response = await fetch('https://reqres.in/api/todos?delay=1');
     axios.get<todoJson[]>('https://jsonplaceholder.typicode.com/todos')
           .then(res => {
            
@@ -20,25 +20,25 @@ export const fetchUsers = createAsyncThunk('users/fetchUsers', async () => {
           return response.data as todoJson[];
     
   });
-  const usersSlice = createSlice({
-      name: "users",
+  const todosSlice = createSlice({
+      name: "todos",
       initialState: {
-        users: [] as todoJson[],
+        todos: [] as todoJson[],
         loading: false
       },
       reducers: {},
       extraReducers: builder => {
-        builder.addCase(fetchUsers.pending, state => {
+        builder.addCase(fetchtodos.pending, state => {
           state.loading = true
         })
-        builder.addCase(fetchUsers.fulfilled, (state, action) => {
-          state.users = action.payload
+        builder.addCase(fetchtodos.fulfilled, (state, action) => {
+          state.todos = action.payload
           state.loading = false
         })
-        builder.addCase(fetchUsers.rejected, state => {
+        builder.addCase(fetchtodos.rejected, state => {
           state.loading = false
         })
       }
     })
 
-export default usersSlice.reducer
+export default todosSlice.reducer

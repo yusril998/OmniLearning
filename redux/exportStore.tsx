@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
 import messageReducer from './state';
-import usersReducer from './stateTodo';
+import todosReducer from './stateTodo';
 
 export const store = configureStore({
   reducer: {
     message: messageReducer,
-    users: usersReducer
+    todos: todosReducer
   }
 });

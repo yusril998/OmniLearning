@@ -25,7 +25,7 @@ import colors from '../cons/color';
 import strings from '../cons/string';
 import axios from 'axios';
 import { ScrollView } from 'react-native-gesture-handler';
-import { fetchUsers } from '../redux/stateTodo';
+import { fetchtodos } from '../redux/stateTodo';
 
 
 
@@ -41,10 +41,10 @@ const HomeScreen = () => {
 
 export const AppWrapper = ({ }) => {
   const dispatch = useDispatch();
-  const { users, loading } = useSelector((state: any) => state.users)
+  const { todos, loading } = useSelector((state: any) => state.todos)
 
   useEffect(() => {
-    dispatch(fetchUsers());
+    dispatch(fetchtodos());
   }, []);
 
   
@@ -62,7 +62,7 @@ export const AppWrapper = ({ }) => {
 
       </View>
       <ScrollView>
-        {users && users.map((repo:any) => {
+        {todos && todos.map((repo:any) => {
           return (
             <Todo label={repo.title} isSelected={repo.completed} />
           );
