@@ -10,57 +10,50 @@
 
 import React, { useEffect } from 'react';
 import {
+  ActivityIndicator,
   Image,
   StatusBar,
   StyleSheet,
   Text,
   View,
 } from 'react-native';
-import Btn from '../component/btn';
+import { store } from "../redux/exportStore";
+import { Provider } from 'react-redux';
 import Todo from '../component/todo';
-import Txtfeld from '../component/txtfeld';
+import { useDispatch, useSelector } from 'react-redux';
 import colors from '../cons/color';
 import strings from '../cons/string';
 import axios from 'axios';
 import { ScrollView } from 'react-native-gesture-handler';
-export interface todoJson {
-  userId: number;
-  id: number;
-  title: string;
-  completed: boolean;
+import { fetchUsers } from '../redux/stateTodo';
+
+
+
+const HomeScreen = () => {
+ 
+  return (
+    <Provider store={store}> 
+      <HomeScreen/>
+    </Provider>
+  )
 }
 
 
-
-
-
-const HomeScreen = ({ }) => {
-
-
-  const [data, setData] = React.useState<todoJson[]>([]);
+export const AppWrapper = ({ }) => {
+  const dispatch = useDispatch();
+  const { users, loading } = useSelector((state: any) => state.users)
 
   useEffect(() => {
-    async function fetchMyAPI() {
-      console.log("lalla");
-      axios.get<todoJson[]>('https://jsonplaceholder.typicode.com/todos')
-        .then(res => {
-          setData(res.data);
-          console.log(data);
+    dispatch(fetchUsers());
+  }, []);
 
-        });
-    }
+  
 
-    fetchMyAPI()
-  }, [setData])
-
-
-
-
-
-
-
+  if (loading) {
+    return <ActivityIndicator size="large" style={styles.loader} />;
+  }else{
   return (
-
+    
     <View style={styles.container}>
       <StatusBar backgroundColor={colors.primary} barStyle="light-content" />
 
@@ -69,7 +62,7 @@ const HomeScreen = ({ }) => {
 
       </View>
       <ScrollView>
-        {data && data.map((repo) => {
+        {users && users.map((repo:any) => {
           return (
             <Todo label={repo.title} isSelected={repo.completed} />
           );
@@ -78,6 +71,10 @@ const HomeScreen = ({ }) => {
     </View>
 
   );
+  }
+
+
+
 };
 
 const styles = StyleSheet.create({
@@ -111,6 +108,10 @@ const styles = StyleSheet.create({
     color: colors.primary,
     fontWeight: 'bold',
     fontSize: 20
+  },
+  loader: {
+    marginTop: 'auto',
+    marginBottom: 'auto'
   },
 });
 

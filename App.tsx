@@ -7,7 +7,7 @@
  *
  * @format
  */
-
+ import { Provider } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import React from 'react';
@@ -31,12 +31,13 @@ import {
 import HomeScreen from './screen/HomeScreen';
 import LoginScreen from './screen/LoginScreen';
 import StartedScreen from './screen/StartedScreen';
-
+import { store } from './redux/exportStore';
 const Section: React.FC<{
   title: string;
 }> = ({children, title}) => {
   const isDarkMode = useColorScheme() === 'dark';
   return (
+    <Provider store={store}>
     <View style={styles.sectionContainer}>
       <Text
         style={[
@@ -57,6 +58,7 @@ const Section: React.FC<{
         {children}
       </Text>
     </View>
+    </Provider>
   );
 };
 
